@@ -304,7 +304,7 @@
                   {
                       "parameters":  {
                                          "method":  "POST",
-                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "url":  "https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage",
                                          "sendBody":  true,
                                          "bodyParameters":  {
                                                                 "parameters":  [
@@ -375,7 +375,7 @@
                   {
                       "parameters":  {
                                          "method":  "POST",
-                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "url":  "https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage",
                                          "sendBody":  true,
                                          "bodyParameters":  {
                                                                 "parameters":  [
@@ -410,7 +410,7 @@
                   {
                       "parameters":  {
                                          "method":  "POST",
-                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/editMessageReplyMarkup",
+                                         "url":  "https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/editMessageReplyMarkup",
                                          "sendBody":  true,
                                          "bodyParameters":  {
                                                                 "parameters":  [
@@ -534,7 +534,7 @@
                   {
                       "parameters":  {
                                          "method":  "POST",
-                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "url":  "https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage",
                                          "sendBody":  true,
                                          "bodyParameters":  {
                                                                 "parameters":  [
@@ -617,7 +617,7 @@
                   {
                       "parameters":  {
                                          "method":  "POST",
-                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "url":  "https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage",
                                          "sendBody":  true,
                                          "bodyParameters":  {
                                                                 "parameters":  [
@@ -673,7 +673,7 @@
                   {
                       "parameters":  {
                                          "method":  "POST",
-                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "url":  "https://api.telegram.org/botYOUR_TELEGRAM_BOT_TOKEN/sendMessage",
                                          "sendBody":  true,
                                          "bodyParameters":  {
                                                                 "parameters":  [
@@ -778,3 +778,4 @@
                   }
               ]
 }
+
