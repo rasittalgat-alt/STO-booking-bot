@@ -1,0 +1,780 @@
+﻿{
+    "settings":  {
+                     "executionOrder":  "v1",
+                     "binaryMode":  "separate",
+                     "timeSavedMode":  "fixed",
+                     "callerPolicy":  "workflowsFromSameOwner",
+                     "availableInMCP":  false
+                 },
+    "tags":  [
+
+             ],
+    "name":  "🔧 СТО - Запись на Услуги",
+    "connections":  {
+                        "Telegram Trigger":  {
+                                                 "main":  [
+                                                              [
+                                                                  {
+                                                                      "node":  "Podgotovka vvoda",
+                                                                      "type":  "main",
+                                                                      "index":  0
+                                                                  }
+                                                              ]
+                                                          ]
+                                             },
+                        "Podgotovka vvoda":  {
+                                                 "main":  [
+                                                              [
+                                                                  {
+                                                                      "node":  "Proverka oplaty",
+                                                                      "type":  "main",
+                                                                      "index":  0
+                                                                  },
+                                                                  {
+                                                                      "node":  "Udalit knopki",
+                                                                      "type":  "main",
+                                                                      "index":  0
+                                                                  }
+                                                              ]
+                                                          ]
+                                             },
+                        "Proverka oplaty":  {
+                                                "main":  [
+                                                             [
+                                                                 {
+                                                                     "node":  "Verifikatsiya cheka",
+                                                                     "type":  "main",
+                                                                     "index":  0
+                                                                 }
+                                                             ],
+                                                             [
+                                                                 {
+                                                                     "node":  "Proverka shablona",
+                                                                     "type":  "main",
+                                                                     "index":  0
+                                                                 }
+                                                             ]
+                                                         ]
+                                            },
+                        "Verifikatsiya cheka":  {
+                                                    "main":  [
+                                                                 [
+                                                                     {
+                                                                         "node":  "Otpravka podtverzhdeniya",
+                                                                         "type":  "main",
+                                                                         "index":  0
+                                                                     }
+                                                                 ]
+                                                             ]
+                                                },
+                        "Otpravka podtverzhdeniya":  {
+                                                         "main":  [
+                                                                      [
+                                                                          {
+                                                                              "node":  "Sozdat v Calendar",
+                                                                              "type":  "main",
+                                                                              "index":  0
+                                                                          },
+                                                                          {
+                                                                              "node":  "Notify Manager",
+                                                                              "type":  "main",
+                                                                              "index":  0
+                                                                          },
+                                                                          {
+                                                                              "node":  "Bitrix24 - Sozdat sdelku",
+                                                                              "type":  "main",
+                                                                              "index":  0
+                                                                          }
+                                                                      ]
+                                                                  ]
+                                                     },
+                        "Proverka shablona":  {
+                                                  "main":  [
+                                                               [
+                                                                   {
+                                                                       "node":  "Otpravka shablona",
+                                                                       "type":  "main",
+                                                                       "index":  0
+                                                                   }
+                                                               ],
+                                                               [
+                                                                   {
+                                                                       "node":  "AI Agent",
+                                                                       "type":  "main",
+                                                                       "index":  0
+                                                                   }
+                                                               ]
+                                                           ]
+                                              },
+                        "Google Gemini Chat Model":  {
+                                                         "ai_languageModel":  [
+                                                                                  [
+                                                                                      {
+                                                                                          "node":  "AI Agent",
+                                                                                          "type":  "ai_languageModel",
+                                                                                          "index":  0
+                                                                                      }
+                                                                                  ]
+                                                                              ]
+                                                     },
+                        "Pamyat sessii":  {
+                                              "ai_memory":  [
+                                                                [
+                                                                    {
+                                                                        "node":  "AI Agent",
+                                                                        "type":  "ai_memory",
+                                                                        "index":  0
+                                                                    }
+                                                                ]
+                                                            ]
+                                          },
+                        "get_services":  {
+                                             "ai_tool":  [
+                                                             [
+                                                                 {
+                                                                     "node":  "AI Agent",
+                                                                     "type":  "ai_tool",
+                                                                     "index":  0
+                                                                 }
+                                                             ]
+                                                         ]
+                                         },
+                        "book_appointment":  {
+                                                 "ai_tool":  [
+                                                                 [
+                                                                     {
+                                                                         "node":  "AI Agent",
+                                                                         "type":  "ai_tool",
+                                                                         "index":  0
+                                                                     }
+                                                                 ]
+                                                             ]
+                                             },
+                        "OpenAI Chat Model":  {
+                                                  "ai_languageModel":  [
+                                                                           [
+                                                                               {
+                                                                                   "node":  "AI Agent",
+                                                                                   "type":  "ai_languageModel",
+                                                                                   "index":  1
+                                                                               }
+                                                                           ]
+                                                                       ]
+                                              },
+                        "AI Agent":  {
+                                         "main":  [
+                                                      [
+                                                          {
+                                                              "node":  "Formatirovanie otveta",
+                                                              "type":  "main",
+                                                              "index":  0
+                                                          }
+                                                      ]
+                                                  ]
+                                     },
+                        "Formatirovanie otveta":  {
+                                                      "main":  [
+                                                                   [
+                                                                       {
+                                                                           "node":  "Otpravka v Telegram",
+                                                                           "type":  "main",
+                                                                           "index":  0
+                                                                       }
+                                                                   ]
+                                                               ]
+                                                  },
+                        "Otpravka v Telegram":  {
+                                                    "main":  [
+                                                                 [
+                                                                     {
+                                                                         "node":  "Booking Check",
+                                                                         "type":  "main",
+                                                                         "index":  0
+                                                                     }
+                                                                 ]
+                                                             ]
+                                                },
+                        "Booking Check":  {
+                                              "main":  [
+                                                           [
+                                                               {
+                                                                   "node":  "Sohranenie broni",
+                                                                   "type":  "main",
+                                                                   "index":  0
+                                                               }
+                                                           ]
+                                                       ]
+                                          },
+                        "Sohranenie broni":  {
+                                                 "main":  [
+                                                              [
+                                                                  {
+                                                                      "node":  "Otpravka ssylki oplaty",
+                                                                      "type":  "main",
+                                                                      "index":  0
+                                                                  }
+                                                              ]
+                                                          ]
+                                             }
+                    },
+    "nodes":  [
+                  {
+                      "parameters":  {
+                                         "updates":  [
+                                                         "message",
+                                                         "callback_query"
+                                                     ],
+                                         "additionalFields":  {
+
+                                                              }
+                                     },
+                      "id":  "439b9955-6b1d-4ed1-911f-0b8532d45fc8",
+                      "name":  "Telegram Trigger",
+                      "type":  "n8n-nodes-base.telegramTrigger",
+                      "typeVersion":  1.2,
+                      "position":  [
+                                       96,
+                                       -16
+                                   ],
+                      "webhookId":  "20ad3137-2c3c-46b7-8ce7-79f2c6962c0e",
+                      "credentials":  null
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const data = $input.first().json;\nlet userMessage = \u0027\u0027;\nlet chatId = \u0027\u0027;\nlet firstName = \u0027\u0027;\nlet callbackType = \u0027text\u0027;\nlet callbackData = null;\nlet skipAI = false;\nlet templateText = \u0027\u0027;\nlet templateMarkup = \u0027\u0027;\nlet callbackMessageId = null;\n\nif (data.callback_query) {\n  chatId = String(data.callback_query.message.chat.id);\n  firstName = data.callback_query.from.first_name || \u0027\u0027;\n  callbackData = data.callback_query.data;\n  callbackMessageId = data.callback_query.message.message_id;\n\n  if (callbackData === \u0027noop\u0027) {\n    skipAI = true;\n    callbackType = \u0027noop\u0027;\n  } else {\n    const callbackMap = {\n      \u0027new_booking\u0027: \u0027Хочу записаться на услугу\u0027,\n      \u0027show_services\u0027: \u0027Покажи все услуги и цены\u0027,\n      \u0027contact_us\u0027: \u0027Как с вами связаться\u0027,\n      \u0027service_tire\u0027: \u0027Интересует шиномонтаж и балансировка колёс\u0027,\n      \u0027service_oil\u0027: \u0027Нужна замена масла\u0027,\n      \u0027service_brakes\u0027: \u0027Нужна замена тормозных колодок\u0027,\n      \u0027service_repair\u0027: \u0027Нужен мелкий ремонт\u0027\n    };\n    if (callbackMap[callbackData]) {\n      callbackType = callbackData;\n      userMessage = callbackMap[callbackData];\n    } else {\n      callbackType = \u0027callback\u0027;\n      userMessage = callbackData;\n    }\n  }\n} else if (data.message) {\n  chatId = String(data.message.chat.id);\n  firstName = data.message.from.first_name || \u0027\u0027;\n  userMessage = data.message.text || \u0027/start\u0027;\n}\n\n// Payment receipt detection (before template check)\nlet isPaymentReceipt = false;\nlet pendingBookingData = null;\n\nif (chatId) {\n  const isPhoto = !!(data.message \u0026\u0026 data.message.photo \u0026\u0026 data.message.photo.length \u003e 0);\n  const isDocument = !!(data.message \u0026\u0026 data.message.document);\n  const staticData = $getWorkflowStaticData(\u0027global\u0027);\n  const pending = staticData[\u0027payment_\u0027 + chatId];\n  if (pending \u0026\u0026 (isPhoto || isDocument || /оплат|чек|перевел|перевела|готов|done|paid/i.test(userMessage))) {\n    isPaymentReceipt = true;\n    pendingBookingData = pending;\n    skipAI = true;\n  }\n}\n\nconst templates = {\n  \u0027_start\u0027: {\n    text: \u0027👋 Здравствуйте! Я помогу записаться на техническое обслуживание автомобиля.\\n\\nВыберите услугу или напишите вопрос:\u0027,\n    buttons: [\n      [{ \"text\": \"🔧 Шиномонтаж и балансировка\", \"callback_data\": \"service_tire\" }],\n      [{ \"text\": \"🛢 Замена масла\", \"callback_data\": \"service_oil\" }],\n      [{ \"text\": \"🔩 Тормозные колодки\", \"callback_data\": \"service_brakes\" }],\n      [{ \"text\": \"🚗 Мелкий ремонт\", \"callback_data\": \"service_repair\" }],\n      [{ \"text\": \"📋 Все услуги и цены\", \"callback_data\": \"show_services\" }]\n    ]\n  },\n  \u0027contact_us\u0027: {\n    text: \u0027📞 Свяжитесь с нами:\\n\\nТелефон: +7 711 463 6644\\nРабочие часы: Пн-Сб 9:00-20:00\\n\\nИли напишите нам здесь!\u0027,\n    buttons: [\n      [{ \"text\": \"📅 Записаться онлайн\", \"callback_data\": \"new_booking\" }]\n    ]\n  }\n};\n\nlet templateKey = \u0027\u0027;\nif (!isPaymentReceipt) {\n  if (userMessage === \u0027/start\u0027) {\n    templateKey = \u0027_start\u0027;\n  } else if (templates[callbackType]) {\n    templateKey = callbackType;\n  }\n}\n\nif (templateKey) {\n  skipAI = true;\n  const t = templates[templateKey];\n  templateText = t.text;\n  templateMarkup = JSON.stringify({ inline_keyboard: t.buttons });\n}\n\nreturn {\n  json: { userMessage, chatId, firstName, callbackType, callbackData, skipAI, templateText, templateMarkup, callbackMessageId, isPaymentReceipt, pendingBookingData }\n};"
+                                     },
+                      "id":  "7a8638fb-d206-48d7-bdc3-bca2af2abb19",
+                      "name":  "Podgotovka vvoda",
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       368,
+                                       -16
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "conditions":  {
+                                                            "options":  {
+                                                                            "version":  2,
+                                                                            "leftValue":  "",
+                                                                            "caseSensitive":  true,
+                                                                            "typeValidation":  "strict"
+                                                                        },
+                                                            "combinator":  "and",
+                                                            "conditions":  [
+                                                                               {
+                                                                                   "id":  "pay-check-1",
+                                                                                   "operator":  {
+                                                                                                    "type":  "boolean",
+                                                                                                    "operation":  "true",
+                                                                                                    "singleValue":  true
+                                                                                                },
+                                                                                   "leftValue":  "={{ $json.isPaymentReceipt }}",
+                                                                                   "rightValue":  ""
+                                                                               }
+                                                                           ]
+                                                        },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "a1b2c3d4-e5f6-7890-abcd-ef1234567891",
+                      "name":  "Proverka oplaty",
+                      "type":  "n8n-nodes-base.if",
+                      "typeVersion":  2.3,
+                      "position":  [
+                                       580,
+                                       -16
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const data = $(\u0027Podgotovka vvoda\u0027).first().json;\nconst chatId = data.chatId;\nconst pendingData = data.pendingBookingData;\n\n// Demo: always verify successfully, clear from static data\nconst staticData = $getWorkflowStaticData(\u0027global\u0027);\ndelete staticData[\u0027payment_\u0027 + chatId];\n\nif (!pendingData) {\n  return { json: {\n    chatId: chatId || \u0027\u0027,\n    clientName: \u0027\u0027, clientPhone: \u0027\u0027, serviceName: \u0027\u0027,\n    bookingDate: \u0027\u0027, bookingTime: \u0027\u0027, carInfo: \u0027\u0027,\n    startISO: \u0027\u0027, endISO: \u0027\u0027, paymentVerified: false\n  }};\n}\n\nreturn { json: {\n  chatId,\n  clientName: pendingData.clientName || \u0027\u0027,\n  clientPhone: pendingData.clientPhone || \u0027\u0027,\n  serviceName: pendingData.serviceName || \u0027\u0027,\n  bookingDate: pendingData.bookingDate || \u0027\u0027,\n  bookingTime: pendingData.bookingTime || \u0027\u0027,\n  carInfo: pendingData.carInfo || \u0027\u0027,\n  startISO: pendingData.startISO || \u0027\u0027,\n  endISO: pendingData.endISO || \u0027\u0027,\n  paymentVerified: true\n}};"
+                                     },
+                      "id":  "b2c3d4e5-f6a7-8901-bcde-f12345678902",
+                      "name":  "Verifikatsiya cheka",
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       800,
+                                       200
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "chat_id",
+                                                                                       "value":  "={{ $json.chatId }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "text",
+                                                                                       "value":  "={{ \u0027✅ Оплата получена! Запись подтверждена.\\n\\nКлиент: \u0027 + $json.clientName + \u0027\\nУслуга: \u0027 + $json.serviceName + \u0027\\nДата: \u0027 + $json.bookingDate + \u0027\\nВремя: \u0027 + $json.bookingTime + \u0027\\nАвто: \u0027 + ($json.carInfo || \u0027не указано\u0027) + \u0027\\n\\nЖдём вас! Мастер свяжется для подтверждения.\u0027 }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "reply_markup",
+                                                                                       "value":  "={{ JSON.stringify({inline_keyboard: [[{text: \u0027📅 Записаться ещё\u0027, callback_data: \u0027new_booking\u0027}]]}) }}"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "c3d4e5f6-a7b8-9012-cdef-123456789013",
+                      "name":  "Otpravka podtverzhdeniya",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       1060,
+                                       200
+                                   ],
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "conditions":  {
+                                                            "options":  {
+                                                                            "version":  2,
+                                                                            "leftValue":  "",
+                                                                            "caseSensitive":  true,
+                                                                            "typeValidation":  "strict"
+                                                                        },
+                                                            "combinator":  "and",
+                                                            "conditions":  [
+                                                                               {
+                                                                                   "id":  "1",
+                                                                                   "operator":  {
+                                                                                                    "type":  "boolean",
+                                                                                                    "operation":  "true",
+                                                                                                    "singleValue":  true
+                                                                                                },
+                                                                                   "leftValue":  "={{ $json.skipAI }}",
+                                                                                   "rightValue":  ""
+                                                                               }
+                                                                           ]
+                                                        },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "7e3ab38b-f655-470c-814b-59e3ddc4e657",
+                      "name":  "Proverka shablona",
+                      "type":  "n8n-nodes-base.if",
+                      "typeVersion":  2.3,
+                      "position":  [
+                                       784,
+                                       -16
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "chat_id",
+                                                                                       "value":  "={{ $json.chatId }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "text",
+                                                                                       "value":  "={{ $json.templateText }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "reply_markup",
+                                                                                       "value":  "={{ $json.templateMarkup }}"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "2766c55a-3536-4f62-8dee-554719d5e537",
+                      "name":  "Otpravka shablona",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       1016,
+                                       -192
+                                   ],
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/editMessageReplyMarkup",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "chat_id",
+                                                                                       "value":  "={{ $json.chatId }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "message_id",
+                                                                                       "value":  "={{ $json.callbackMessageId }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "reply_markup",
+                                                                                       "value":  "={{ JSON.stringify({inline_keyboard: [[{text: \u0027⏳ Обработка...\u0027, callback_data: \u0027noop\u0027}]]}) }}"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "09008d23-46d9-4732-b2f0-42286a50886f",
+                      "name":  "Udalit knopki",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       336,
+                                       240
+                                   ],
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "promptType":  "define",
+                                         "text":  "={{ $json.userMessage }}",
+                                         "needsFallback":  true,
+                                         "options":  {
+                                                         "systemMessage":  "Ты — умный ассистент автосервиса. Помогаешь клиентам записаться на техническое обслуживание автомобиля.\n\nОтвечай на языке клиента (русский или казахский).\nНЕ используй символы Markdown: * _ ` [ ] — они ломают отображение в Telegram.\n\nФОРМАТИРОВАНИЕ:\n- При показе списка услуг — каждую услугу выводи ОТДЕЛЬНОЙ строкой в формате:\n1. Название: цена, время\nНапример:\n1. Балансировка колёс: 2 500 тг/колесо, 30 мин\n2. Шиномонтаж сезонный: 6 000 тг, 45 мин\n- Разделяй блоки пустой строкой для читаемости\n\nПРОЦЕСС ЗАПИСИ:\n1. Поздоровайся и спроси что нужно клиенту\n2. Предложи подходящую услугу. Используй инструмент get_services чтобы показать список услуг с ценами\n3. Уточни детали: марка и модель авто, год (необязательно)\n4. Предложи дату и время. Рабочие часы: Пн-Сб 9:00-20:00, Вс — выходной. Запись каждые 30 минут.\n5. Запроси имя клиента и номер телефона\n6. Подтверди детали записи и вызови инструмент book_appointment\n7. После успешного вызова book_appointment, отправь подтверждение СТРОГО в таком формате:\n\nЗапись подтверждена!\n\nКлиент: [имя]\nТелефон: [номер]\nУслуга: [название]\nДата: [DD.MM.YYYY]\nВремя: [HH:MM]\nАвто: [марка модель или не указано]\n\nЖдём вас! Мастер свяжется для подтверждения.\n\nВАЖНО:\n- Дата ВСЕГДА DD.MM.YYYY (например: 25.04.2026)\n- Время ВСЕГДА HH:MM (например: 10:00)\n- Используй только услуги из get_services\n- Если просят нестандартное — предложи Диагностику двигателя, мастер уточнит"
+                                                     }
+                                     },
+                      "id":  "9da3ee2b-c524-4683-b661-c31caf0e2d56",
+                      "name":  "AI Agent",
+                      "type":  "@n8n/n8n-nodes-langchain.agent",
+                      "typeVersion":  3.1,
+                      "position":  [
+                                       992,
+                                       80
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "ef4db362-9f29-417c-a36e-18953cb72f1a",
+                      "name":  "Google Gemini Chat Model",
+                      "type":  "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+                      "typeVersion":  1,
+                      "position":  [
+                                       80,
+                                       608
+                                   ],
+                      "credentials":  null
+                  },
+                  {
+                      "parameters":  {
+                                         "sessionIdType":  "customKey",
+                                         "sessionKey":  "={{ $(\u0027Podgotovka vvoda\u0027).first().json.chatId }}",
+                                         "contextWindowLength":  15
+                                     },
+                      "id":  "cf85873e-4480-45d6-8d3c-22290e363e93",
+                      "name":  "Pamyat sessii",
+                      "type":  "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+                      "typeVersion":  1.3,
+                      "position":  [
+                                       1200,
+                                       272
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "description":  "Получить список услуг автосервиса с ценами и временем выполнения.",
+                                         "jsCode":  "return JSON.stringify({\n  services: [\n    { id: 1, name: \u0027Балансировка колёс\u0027, price: \u00272 500 тг/колесо (4 шт — 10 000 тг)\u0027, duration_min: 30 },\n    { id: 2, name: \u0027Шиномонтаж сезонный (4 шт)\u0027, price: \u00276 000 тг\u0027, duration_min: 45 },\n    { id: 3, name: \u0027Замена масла (без стоимости масла)\u0027, price: \u00273 000 тг\u0027, duration_min: 30 },\n    { id: 4, name: \u0027Замена тормозных колодок (за ось)\u0027, price: \u00274 000 тг\u0027, duration_min: 30 },\n    { id: 5, name: \u0027Развал-схождение\u0027, price: \u00275 000 тг\u0027, duration_min: 45 },\n    { id: 6, name: \u0027Диагностика двигателя\u0027, price: \u00275 000 тг\u0027, duration_min: 60 },\n    { id: 7, name: \u0027Замена воздушного фильтра\u0027, price: \u00271 500 тг + стоимость фильтра\u0027, duration_min: 15 },\n    { id: 8, name: \u0027Замена свечей зажигания\u0027, price: \u00272 000 тг + стоимость свечей\u0027, duration_min: 30 },\n    { id: 9, name: \u0027Промывка инжектора\u0027, price: \u00278 000 тг\u0027, duration_min: 60 },\n    { id: 10, name: \u0027Мелкий кузовной ремонт\u0027, price: \u0027от 15 000 тг\u0027, duration_min: 120 }\n  ],\n  working_hours: \u0027Пн-Сб: 9:00-20:00, Вс: выходной\u0027,\n  slot_interval_min: 30\n});"
+                                     },
+                      "id":  "c75ea34f-4932-4eef-b7da-8ca437949c89",
+                      "name":  "get_services",
+                      "type":  "@n8n/n8n-nodes-langchain.toolCode",
+                      "typeVersion":  1.3,
+                      "position":  [
+                                       944,
+                                       608
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "// Parameters may or may not be injected depending on n8n version\n// Always return success - AI holds all booking data in session memory\n// and will format the confirmation message itself\nlet svc = \u0027\u0027, nm = \u0027\u0027, ph = \u0027\u0027;\ntry { if (typeof service_name !== \u0027undefined\u0027 \u0026\u0026 service_name) svc = String(service_name); } catch(e) {}\ntry { if (typeof client_name !== \u0027undefined\u0027 \u0026\u0026 client_name) nm = String(client_name); } catch(e) {}\ntry { if (typeof client_phone !== \u0027undefined\u0027 \u0026\u0026 client_phone) ph = String(client_phone); } catch(e) {}\n\nconst id = \u0027STO-\u0027 + String(Date.now()).slice(-6);\nconst info = [svc, nm, ph].filter(x =\u003e x).join(\u0027, \u0027);\nreturn \u0027OK: Запись \u0027 + id + \u0027 зарегистрирована.\u0027 + (info ? \u0027 Клиент: \u0027 + info + \u0027.\u0027 : \u0027\u0027);"
+                                     },
+                      "id":  "b22a3a98-607e-4d67-9d8b-3fb081d9ec21",
+                      "name":  "book_appointment",
+                      "type":  "@n8n/n8n-nodes-langchain.toolCode",
+                      "typeVersion":  1.3,
+                      "position":  [
+                                       1280,
+                                       672
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const aiResponse = $input.first().json.output;\nconst prepData = $(\u0027Podgotovka vvoda\u0027).first().json;\nconst chatId = prepData.chatId;\nconst callbackType = prepData.callbackType || \u0027text\u0027;\nlet text = aiResponse || \u0027Произошла ошибка. Попробуйте ещё раз.\u0027;\ntext = text.replace(/[*`[\\]]/g, \u0027\u0027).replace(/_+/g, \u0027 \u0027).replace(/ {2,}/g, \u0027 \u0027);\nlet isBooking = false, clientName = \u0027\u0027, clientPhone = \u0027\u0027, serviceName = \u0027\u0027, bookingDate = \u0027\u0027, bookingTime = \u0027\u0027, carInfo = \u0027\u0027, startISO = \u0027\u0027, endISO = \u0027\u0027;\nconst tl = text.toLowerCase();\nif (tl.includes(\u0027запись подтверждена\u0027) || tl.includes(\u0027жазба расталды\u0027)) {\n  isBooking = true;\n  var nm = text.match(/Клиент[:\\s]+([^\\n]+)/i);\n  var ph = text.match(/Телефон[:\\s]+([^\\n]+)/i);\n  var sv = text.match(/Услуга[:\\s]+([^\\n]+)/i);\n  var dt = text.match(/Дата[:\\s]+([^\\n]+)/i);\n  var tm = text.match(/Время[:\\s]+([^\\n]+)/i);\n  var cr = text.match(/Авто[:\\s]+([^\\n]+)/i);\n  clientName = nm ? nm[1].trim() : \u0027\u0027;\n  clientPhone = ph ? ph[1].trim() : \u0027\u0027;\n  serviceName = sv ? sv[1].trim() : \u0027\u0027;\n  bookingDate = dt ? dt[1].trim() : \u0027\u0027;\n  bookingTime = tm ? tm[1].trim() : \u0027\u0027;\n  carInfo = cr ? cr[1].replace(/\\s*(Ждём|Мастер|Запись).*/i, \u0027\u0027).trim() : \u0027\u0027;\n  if (bookingDate \u0026\u0026 bookingTime) {\n    var dn = bookingDate; var dp = bookingDate.match(/(\\d{1,2})\\.(\\d{1,2})\\.(\\d{4})/);\n    if (dp) dn = dp[3] + \u0027-\u0027 + dp[2].padStart(2,\u00270\u0027) + \u0027-\u0027 + dp[1].padStart(2,\u00270\u0027);\n    var tp = bookingTime.match(/(\\d{1,2}):(\\d{2})/); var tn = tp ? tp[1].padStart(2,\u00270\u0027) + \u0027:\u0027 + tp[2] : bookingTime;\n    startISO = dn + \u0027T\u0027 + tn + \u0027:00+05:00\u0027;\n    var tpParts = tn.split(\u0027:\u0027);\n    var endH = String(parseInt(tpParts[0]) + 1).padStart(2, \u00270\u0027);\n    endISO = dn + \u0027T\u0027 + endH + \u0027:\u0027 + tpParts[1] + \u0027:00+05:00\u0027;\n  }\n}\nif (isBooking) {\n  text = text.replace(/Запись подтверждена!?\\s*/i, \u0027\u0027).trim();\n  text = text.replace(/\\nЖдём вас![^\\n]*/i, \u0027\u0027).replace(/Ждём вас![^\\n]*/i, \u0027\u0027).trim();\n  text = text.replace(/Жазба расталды!?\\s*/i, \u0027\u0027).trim();\n  text = text.replace(/^[\\s\\n]+/, \u0027\u0027).trim();\n}\nvar btns = [];\nif (isBooking) { btns = [[{text:\u0027⏳ Ожидаем оплату...\u0027,callback_data:\u0027noop\u0027}]]; }\nelse if (callbackType===\u0027contact_us\u0027) { btns = [[{text:\u0027📅 Записаться\u0027,callback_data:\u0027new_booking\u0027}]]; }\nelse if (tl.includes(\u0027здравствуйт\u0027) || tl.includes(\u0027салам\u0027)) { btns = [[{text:\u0027📋 Все услуги\u0027,callback_data:\u0027show_services\u0027}]]; }\nelse { btns = [[{text:\u0027🔄 Другая услуга\u0027,callback_data:\u0027new_booking\u0027}],[{text:\u0027📞 Контакты\u0027,callback_data:\u0027contact_us\u0027}]]; }\nreturn { json: { chat_id: chatId, text: text.trim(), reply_markup: {inline_keyboard: btns}, isBooking, clientName, clientPhone, serviceName, bookingDate, bookingTime, carInfo, startISO, endISO } };"
+                                     },
+                      "id":  "5378eed1-6841-4bf7-bcb7-bc7a09f1f4ad",
+                      "name":  "Formatirovanie otveta",
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       1360,
+                                       0
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "chat_id",
+                                                                                       "value":  "={{ $json.chat_id }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "text",
+                                                                                       "value":  "={{ $json.text }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "reply_markup",
+                                                                                       "value":  "={{ JSON.stringify($json.reply_markup) }}"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "74321dfd-88c9-483b-8564-acbfb0e3034b",
+                      "name":  "Otpravka v Telegram",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       1600,
+                                       0
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "conditions":  {
+                                                            "options":  {
+                                                                            "version":  2,
+                                                                            "leftValue":  "",
+                                                                            "caseSensitive":  true,
+                                                                            "typeValidation":  "strict"
+                                                                        },
+                                                            "combinator":  "and",
+                                                            "conditions":  [
+                                                                               {
+                                                                                   "id":  "1",
+                                                                                   "operator":  {
+                                                                                                    "type":  "boolean",
+                                                                                                    "operation":  "true",
+                                                                                                    "singleValue":  true
+                                                                                                },
+                                                                                   "leftValue":  "={{ $(\u0027Formatirovanie otveta\u0027).first().json.isBooking }}",
+                                                                                   "rightValue":  ""
+                                                                               }
+                                                                           ]
+                                                        },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "f75c7185-11d2-44b6-b32d-68547260351a",
+                      "name":  "Booking Check",
+                      "type":  "n8n-nodes-base.if",
+                      "typeVersion":  2.3,
+                      "position":  [
+                                       1840,
+                                       0
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "jsCode":  "const formData = $(\u0027Formatirovanie otveta\u0027).first().json;\nconst chatId = $(\u0027Podgotovka vvoda\u0027).first().json.chatId;\n\nconst bookingData = {\n  clientName: formData.clientName || \u0027\u0027,\n  clientPhone: formData.clientPhone || \u0027\u0027,\n  serviceName: formData.serviceName || \u0027\u0027,\n  bookingDate: formData.bookingDate || \u0027\u0027,\n  bookingTime: formData.bookingTime || \u0027\u0027,\n  carInfo: formData.carInfo || \u0027\u0027,\n  startISO: formData.startISO || \u0027\u0027,\n  endISO: formData.endISO || \u0027\u0027\n};\n\nconst staticData = $getWorkflowStaticData(\u0027global\u0027);\nstaticData[\u0027payment_\u0027 + chatId] = bookingData;\n\nreturn { json: { chatId, bookingData, saved: true } };"
+                                     },
+                      "id":  "d4e5f6a7-b8c9-0123-defa-234567890124",
+                      "name":  "Sohranenie broni",
+                      "type":  "n8n-nodes-base.code",
+                      "typeVersion":  2,
+                      "position":  [
+                                       2080,
+                                       -80
+                                   ]
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "chat_id",
+                                                                                       "value":  "={{ $json.chatId }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "text",
+                                                                                       "value":  "={{ \u0027💳 Для подтверждения записи необходима предоплата\\n\\nУслуга: \u0027 + $json.bookingData.serviceName + \u0027\\nДата: \u0027 + $json.bookingData.bookingDate + \u0027\\nВремя: \u0027 + $json.bookingData.bookingTime + \u0027\\n\\nСумма: 1 000 тг (депозит)\\n\\nОплатите по ссылке Kaspi:\\nhttps://pay.kaspi.kz/pay/123\\n\\nПосле оплаты отправьте скриншот чека в этот чат — запись будет подтверждена автоматически!\u0027 }}"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "e5f6a7b8-c9d0-1234-efab-345678901235",
+                      "name":  "Otpravka ssylki oplaty",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       2320,
+                                       -80
+                                   ],
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "calendar":  {
+                                                          "__rl":  true,
+                                                          "value":  "c4ed2eeceac2bdff391d46918964bb4cea5c4956db66b3925a806f1f48a869da@group.calendar.google.com",
+                                                          "mode":  "id"
+                                                      },
+                                         "start":  "={{ $(\u0027Verifikatsiya cheka\u0027).first().json.startISO }}",
+                                         "end":  "={{ $(\u0027Verifikatsiya cheka\u0027).first().json.endISO }}",
+                                         "additionalFields":  {
+                                                                  "description":  "={{ \u0027Клиент: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.clientName + \u0027\\nТелефон: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.clientPhone + \u0027\\nАвто: \u0027 + ($(\u0027Verifikatsiya cheka\u0027).first().json.carInfo || \u0027не указано\u0027) + \u0027\\nЗаписан через Telegram бот (оплата Kaspi)\u0027 }}",
+                                                                  "summary":  "={{ $(\u0027Verifikatsiya cheka\u0027).first().json.serviceName + \u0027 — \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.clientName }}"
+                                                              }
+                                     },
+                      "id":  "8136e9b5-035b-4629-b8dd-5b0019afca10",
+                      "name":  "Sozdat v Calendar",
+                      "type":  "n8n-nodes-base.googleCalendar",
+                      "typeVersion":  1.3,
+                      "position":  [
+                                       1300,
+                                       120
+                                   ],
+                      "credentials":  null,
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://api.telegram.org/bot8701365413:AAG9bV0M2tG_so1C1VmWVoK1ymcx5LyWm6M/sendMessage",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "chat_id",
+                                                                                       "value":  "711463644"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "text",
+                                                                                       "value":  "={{ \u0027🔧 НОВАЯ ЗАПИСЬ В СТО! (оплата Kaspi)\\n\\nКлиент: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.clientName + \u0027\\nТелефон: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.clientPhone + \u0027\\nУслуга: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.serviceName + \u0027\\nДата: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.bookingDate + \u0027\\nВремя: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.bookingTime + \u0027\\nАвто: \u0027 + ($(\u0027Verifikatsiya cheka\u0027).first().json.carInfo || \u0027не указано\u0027) + \u0027\\n\\n⏰ \u0027 + $now.format(\u0027dd.MM.yyyy HH:mm\u0027) }}"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "02de731e-705b-4932-a4a1-c10b9d4c69fc",
+                      "name":  "Notify Manager",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       1300,
+                                       320
+                                   ],
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "method":  "POST",
+                                         "url":  "https://b24-25042o.bitrix24.kz/rest/1/8kzhu85k239mk0em/crm.deal.add",
+                                         "sendBody":  true,
+                                         "bodyParameters":  {
+                                                                "parameters":  [
+                                                                                   {
+                                                                                       "name":  "fields[TITLE]",
+                                                                                       "value":  "={{ \u0027СТО: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.serviceName + \u0027 — \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.clientName + \u0027 — \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.bookingDate + \u0027 \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.bookingTime }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "fields[CONTACT_NAME]",
+                                                                                       "value":  "={{ $(\u0027Verifikatsiya cheka\u0027).first().json.clientName }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "fields[PHONE][0][VALUE]",
+                                                                                       "value":  "={{ $(\u0027Verifikatsiya cheka\u0027).first().json.clientPhone }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "fields[PHONE][0][VALUE_TYPE]",
+                                                                                       "value":  "WORK"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "fields[COMMENTS]",
+                                                                                       "value":  "={{ \u0027Услуга: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.serviceName + \u0027\\nДата: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.bookingDate + \u0027\\nВремя: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.bookingTime + \u0027\\nАвто: \u0027 + ($(\u0027Verifikatsiya cheka\u0027).first().json.carInfo || \u0027не указано\u0027) + \u0027\\n\\n✅ Депозит оплачен (Kaspi)\\nTelegram Chat ID: \u0027 + $(\u0027Verifikatsiya cheka\u0027).first().json.chatId }}"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "fields[SOURCE_ID]",
+                                                                                       "value":  "OTHER"
+                                                                                   },
+                                                                                   {
+                                                                                       "name":  "fields[STAGE_ID]",
+                                                                                       "value":  "NEW"
+                                                                                   }
+                                                                               ]
+                                                            },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "id":  "f7a8b9c0-d1e2-3456-fabc-def012345678",
+                      "name":  "Bitrix24 - Sozdat sdelku",
+                      "type":  "n8n-nodes-base.httpRequest",
+                      "typeVersion":  4.2,
+                      "position":  [
+                                       1300,
+                                       520
+                                   ],
+                      "continueOnFail":  true
+                  },
+                  {
+                      "parameters":  {
+                                         "model":  {
+                                                       "__rl":  true,
+                                                       "mode":  "list",
+                                                       "value":  "gpt-5-mini"
+                                                   },
+                                         "builtInTools":  {
+
+                                                          },
+                                         "options":  {
+
+                                                     }
+                                     },
+                      "type":  "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+                      "typeVersion":  1.3,
+                      "position":  [
+                                       416,
+                                       768
+                                   ],
+                      "id":  "2ef86872-a5f0-4f72-87bf-c4579d5ee1c6",
+                      "name":  "OpenAI Chat Model",
+                      "credentials":  null
+                  }
+              ]
+}
