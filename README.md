@@ -4,7 +4,7 @@ Telegram-бот для автосервиса с AI-агентом на базе
 
 ## Демо
 
-▶️ **[Смотреть видео-демо](ВСТАВЬ_ССЫЛКУ_СЮДА)**
+▶️ **[Смотреть видео-демо](https://drive.google.com/file/d/1Jrx67hOfYH8-V-cTocf5V6rjBZ_gitRm/view?usp=sharing)**
 
 ## Возможности
 
