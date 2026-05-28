@@ -1,87 +1,86 @@
-# 🔧 СТО - Запись на Услуги (Telegram Bot)
+# 🔧 СТО — Запись на Услуги (Telegram-бот)
 
-An AI-powered Telegram bot for auto service centers (СТО) that handles client appointment booking, payment verification, and CRM integration — built entirely in [n8n](https://n8n.io).
+Telegram-бот для автосервиса с AI-агентом на базе [n8n](https://n8n.io). Принимает заявки от клиентов, записывает на услуги, проверяет оплату и синхронизирует данные с Google Calendar и Bitrix24.
 
-## Features
+## Возможности
 
-- **Conversational AI booking** — clients describe what they need in natural language; the AI agent identifies the right service and books an appointment
-- **Payment verification** — clients send a payment receipt photo; the bot validates it automatically
-- **Google Calendar sync** — confirmed bookings are added to the service center's calendar instantly
-- **Bitrix24 CRM** — a new deal is created in Bitrix24 for every confirmed booking
-- **Manager notifications** — the manager receives an instant Telegram message when a booking is confirmed
-- **Session memory** — the AI remembers context within a conversation (multi-turn dialogue)
+- **Запись через чат** — клиент описывает проблему своими словами, AI-агент определяет нужную услугу и создаёт запись
+- **Проверка оплаты** — клиент отправляет фото чека, бот верифицирует его автоматически
+- **Google Calendar** — подтверждённые записи сразу появляются в календаре
+- **Bitrix24 CRM** — по каждой записи автоматически создаётся сделка
+- **Уведомление менеджера** — мгновенное сообщение в Telegram при подтверждении записи
+- **Память сессии** — бот помнит контекст в рамках одного разговора
 
-## Architecture
+## Архитектура
 
 ```
 Telegram Trigger
     │
-    ├─► Payment Check ──► Receipt Verification ──► Confirmation
+    ├─► Проверка оплаты ──► Верификация чека ──► Подтверждение клиенту
     │
-    └─► AI Agent (Google Gemini / OpenAI)
-            │   Tools:
-            │   ├─ get_services     — lists available services & prices
-            │   └─ book_appointment — creates the booking
+    └─► AI-агент (Google Gemini / OpenAI)
+            │   Инструменты:
+            │   ├─ get_services      — список услуг и цен
+            │   └─ book_appointment  — создание записи
             │
-            └─► On booking confirmed:
-                    ├─ Save booking record
-                    ├─ Send payment link to client
-                    ├─ Create event in Google Calendar
-                    ├─ Notify manager via Telegram
-                    └─ Create deal in Bitrix24
+            └─► После подтверждения записи:
+                    ├─ Сохранение брони
+                    ├─ Отправка ссылки на оплату клиенту
+                    ├─ Создание события в Google Calendar
+                    ├─ Уведомление менеджера в Telegram
+                    └─ Создание сделки в Bitrix24
 ```
 
-## Tech Stack
+## Стек
 
-| Component | Technology |
+| Компонент | Технология |
 |-----------|-----------|
-| Workflow automation | n8n |
-| AI model | Google Gemini / OpenAI GPT |
-| Messaging | Telegram Bot API |
-| Calendar | Google Calendar |
+| Автоматизация | n8n |
+| AI-модель | Google Gemini / OpenAI GPT |
+| Мессенджер | Telegram Bot API |
+| Календарь | Google Calendar |
 | CRM | Bitrix24 |
-| Payment | Custom payment link |
 
-## Nodes (22 total)
+## Узлы воркфлоу (22 штуки)
 
-| Node | Purpose |
-|------|---------|
-| Telegram Trigger | Entry point — receives all messages |
-| Proverka oplaty | Checks if message is a payment receipt |
-| Verifikatsiya cheka | Validates receipt image |
-| AI Agent | Core booking logic via LLM |
-| Google Gemini / OpenAI | LLM backends (configurable) |
-| Pamyat sessii | Window buffer memory for conversation context |
-| get_services (Tool) | Returns available services list |
-| book_appointment (Tool) | Creates appointment record |
-| Sohranenie broni | Persists booking data |
-| Otpravka ssylki oplaty | Sends payment link to client |
-| Sozdat v Calendar | Creates Google Calendar event |
-| Notify Manager | Sends Telegram notification to manager |
-| Bitrix24 - Sozdat sdelku | Creates deal in Bitrix24 CRM |
+| Узел | Назначение |
+|------|------------|
+| Telegram Trigger | Точка входа — получает все сообщения |
+| Proverka oplaty | Определяет, является ли сообщение чеком об оплате |
+| Verifikatsiya cheka | Верифицирует изображение чека |
+| AI Agent | Основная логика записи через LLM |
+| Google Gemini / OpenAI | LLM-модели (настраиваются) |
+| Pamyat sessii | Буферная память для контекста разговора |
+| get_services (Tool) | Возвращает список доступных услуг |
+| book_appointment (Tool) | Создаёт запись на услугу |
+| Sohranenie broni | Сохраняет данные брони |
+| Otpravka ssylki oplaty | Отправляет клиенту ссылку на оплату |
+| Sozdat v Calendar | Создаёт событие в Google Calendar |
+| Notify Manager | Уведомляет менеджера в Telegram |
+| Bitrix24 - Sozdat sdelku | Создаёт сделку в Bitrix24 CRM |
 
-## Setup
+## Установка и настройка
 
-1. **Import the workflow** — import `workflow.json` into your n8n instance
-2. **Configure credentials:**
-   - Telegram Bot token
-   - Google Gemini API key (or OpenAI API key)
-   - Google Calendar credentials
-   - Bitrix24 webhook
-3. **Update node parameters:**
-   - Manager Telegram chat ID in `Notify Manager`
-   - Payment link template in `Otpravka ssylki oplaty`
-   - Service list in `get_services` tool
-4. **Activate** the workflow
+1. **Импортируй воркфлоу** — загрузи `workflow.json` в свой инстанс n8n
+2. **Настрой учётные данные:**
+   - Токен Telegram-бота
+   - API-ключ Google Gemini или OpenAI
+   - Учётные данные Google Calendar
+   - Вебхук Bitrix24
+3. **Обнови параметры узлов:**
+   - Chat ID менеджера в узле `Notify Manager`
+   - Шаблон ссылки на оплату в узле `Otpravka ssylki oplaty`
+   - Список услуг в инструменте `get_services`
+4. **Активируй** воркфлоу
 
-## How It Works
+## Как работает
 
-1. Client sends a message to the Telegram bot
-2. The bot checks whether it's a payment receipt or a regular message
-3. For regular messages → the AI Agent handles the conversation, understands intent, and books the appointment using its tools
-4. Once booked → the workflow sends a payment link, creates a calendar event, notifies the manager, and logs the deal in Bitrix24
-5. When the client sends a receipt → the bot verifies it and sends a confirmation
+1. Клиент пишет сообщение в Telegram-бот
+2. Бот определяет — это чек об оплате или обычное сообщение
+3. Обычное сообщение → AI-агент ведёт диалог, выясняет потребность и создаёт запись
+4. После записи → отправляет ссылку на оплату, создаёт событие в календаре, уведомляет менеджера, логирует сделку в Bitrix24
+5. Клиент присылает чек → бот проверяет и отправляет подтверждение
 
-## Author
+## Автор
 
-Built by [Talgat Rashit](https://github.com/rasittalgat-alt) as part of an AI automation portfolio.
+[Talgat Rashit](https://github.com/rasittalgat-alt)
